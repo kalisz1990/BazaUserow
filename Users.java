@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Users {
@@ -37,12 +41,15 @@ public class Users {
     public String getName() {
         return name;
     }
+
     public String getPesel() {
         return pesel;
     }
+
     public String getAddress() {
         return address;
     }
+
     public String getEmail() {
         return email;
     }
@@ -54,19 +61,32 @@ public class Users {
         this.name = inputName.nextLine();
     }
 
-    public void setPesel() {
+    public void setPesel() throws IOException {
+        String line = null;
+        String tPesel = "";
+
         Scanner inputPesel = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new FileReader("src" + File.separator + "usersDatabase.txt"));
 
-        do {
+        while (tPesel.length() != 11) {
             System.out.print("pesel: ");
-            this.pesel = inputPesel.nextLine();
-            if (pesel.length() > 11){
-                System.out.println("za dlugi pesel !!, sprawdz i wprowadz ponownie");}
-            if (pesel.length() < 11){
-                System.out.println("za krotki pesel !!, sprawdz i wprowadz ponownie");}
-        }
-        while (pesel.length() != 11);
+            tPesel = inputPesel.nextLine();
 
+            if (tPesel.length() > 11 || tPesel.length() < 11)
+                System.out.println("wrong pesel !!, check and write again");
+            else {
+                while ((line = reader.readLine()) != null) {
+                    if (line.contains(tPesel)) {
+                        System.out.println("this pesel already exists");
+                        tPesel = "";
+                        break;
+                    }
+                }
+            }
+        }
+        this.pesel = tPesel;
+
+        reader.close();
     }
 
     public void  setAddress() {
