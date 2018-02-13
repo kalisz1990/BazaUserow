@@ -1,8 +1,3 @@
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Users {
@@ -79,20 +74,20 @@ public class Users {
 
     public void  setAddress() {
         String street;
-        int bNumber;
-        int aNumber;
+        String bNumber;
+        String aNumber;
+
+        Scanner inputAddress = new Scanner(System.in);
 
         System.out.println("addres details: ");
-        Scanner inputAddress = new Scanner(System.in);
-        System.out.print("  street: ");
+        System.out.print("    street: ");
         street = inputAddress.nextLine();
-        System.out.print("  building number: ");
-        bNumber = inputAddress.nextInt();
-        System.out.print("  apartment number: ");
-        aNumber = inputAddress.nextInt();
+        System.out.print("    building number: ");
+        bNumber = inputAddress.nextLine();
+        System.out.print("    apartment number: ");
+        aNumber = inputAddress.nextLine();
 
         this.address = street +" " + bNumber + "/" + aNumber;
-
     }
 
     public void setEmail() {
@@ -106,67 +101,5 @@ public class Users {
         return this.name + ", " + this.pesel + ", " + this.address + ", " + this.email;
     }
 
-
-
-    public static String addUser() {
-
-        int answer;
-
-        Scanner writeAnswer = new Scanner(System.in);
-        Users users = new Users();
-
-        System.out.println("add another user: 1\nexit: 2\n");
-        answer = writeAnswer.nextInt();
-
-        try {
-            FileManager fileManager = new FileManager();
-            BufferedWriter writer = new BufferedWriter(new FileWriter("usersDatabase.txt",true));
-
-            fileManager.createFile();
-
-            while (answer != 2)
-            {
-                switch (answer)
-                {
-                    //creating new user
-                    case 1: {
-                        users.setPesel();
-                        writer.write("pesel: " + users.pesel);
-                        writer.newLine();
-                        users.setName();
-                        writer.write("name: " + users.name);
-                        writer.newLine();
-                        users.setAddress();
-                        writer.write("address: " + users.address);
-                        writer.newLine();
-                        users.setEmail();
-                        writer.write("email: " + users.email);
-                        writer.newLine();
-                        writer.write("------------");
-                        writer.newLine();
-
-
-                        System.out.println("\nadd another user: 1\nexit: 2\n");
-                        answer = writeAnswer.nextInt();
-                        break;
-                    }
-                    default:
-                        System.out.println("this is not correct, try again");
-                        System.out.println("\nadd another user: 1\nexit: 2\n");
-                        answer = writeAnswer.nextInt();
-                        break;
-                }
-            }
-
-            writer.close();
-
-        }
-        catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-
-       return users.pesel + users.name + users.address + users.email;
-    }
 }
 
