@@ -37,15 +37,12 @@ public class Users {
     public String getName() {
         return name;
     }
-
     public String getPesel() {
         return pesel;
     }
-
     public String getAddress() {
         return address;
     }
-
     public String getEmail() {
         return email;
     }

@@ -5,7 +5,7 @@ public class FileManager {
 
     public static void createFile() throws IOException
         {
-            File plik = new File("usersDatabase.txt");
+            File plik = new File("src" + File.separator + "usersDatabase.txt");
             if (!plik.exists())
                 plik.createNewFile();
         }
@@ -25,12 +25,14 @@ public class FileManager {
             {
                 case 1:
                     FileManager.addUser();
-                    System.out.println("add another user: 1\nfind user: 2 \nexit: 3\n");
+                    System.out.println("\nadd another user: 1\nfind user: 2 \nexit: 3\n");
                     answer = writeAnswer.nextInt();
                     break;
 
                 case 2:
                     FileManager.findUser();
+                    System.out.println("\nadd another user: 1\nfind user: 2 \nexit: 3\n");
+                    answer = writeAnswer.nextInt();
                     break;
 
                 default:
@@ -45,7 +47,7 @@ public class FileManager {
     public static void addUser() throws IOException
     {
         Users users = new Users();
-        BufferedWriter writer = new BufferedWriter(new FileWriter("usersDatabase.txt",true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src" + File.separator + "usersDatabase.txt",true));
 
         users.setPesel();
         writer.write("pesel: " + users.pesel);
@@ -71,7 +73,7 @@ public class FileManager {
         String line = "";
 
         Scanner searchUser = new Scanner(System.in);
-        BufferedReader reader = new BufferedReader(new FileReader("usersDatabase.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("src" + File.separator + "usersDatabase.txt"));
 
         System.out.print("\npesel of person you want to find: ");
         search = searchUser.nextLine();
