@@ -4,14 +4,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * @mk: dlaczego Users ? liczba mnoga ? dla mnie to jest "User"
+ */
 public class Users {
 
+    // @mk: dlaczego te właściwości są publiczne -> do manipulacji tymi danymi masz już settery i gettery, do nauki: enkapsulacja
     public String name;
     public String pesel;
     public String address;
     public String email;
 
     public Users() {
+        // @mk: dlaczego inicjalizujesz to wszytko spacją :> ?
         this.name = " ";
         this.address = " ";
         this.pesel = " ";
@@ -23,6 +28,7 @@ public class Users {
         this.name = name;
         this.pesel = pesel;
 
+        // @mk: ładniej byłoby działać na wyjątkach - do nauki: nauczyć się wyłapywać Exception'y
         if (pesel.length() != 11)
             System.out.println("blad - " + name + ": podany zostal zly pesel");
     }
@@ -52,6 +58,9 @@ public class Users {
     }
 
 
+    // @mk: ta klasa "Users" wygląda mi na tzw Encje (->google), zasadniczo nie powinineś się tu odwoływać do konsoli
+    // @mk: settery z zasady działają trochę inaczej one przyjmują argument setName(String name) { this.name = name; }
+    // @mk: natomiast całą komunikację lepiej byłoby mieć gdzieś w osobnej klasie
     public void setName() {
         Scanner inputName = new Scanner(System.in);
         System.out.print("name: ");
