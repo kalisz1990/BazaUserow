@@ -56,15 +56,16 @@ public class FileManager {
         BufferedWriter writer = new BufferedWriter(new FileWriter("src" + File.separator + "usersDatabase.txt",true));
 
         users.setPesel();
+        users.setName();
+        users.setAddress();
+        users.setEmail();
+
         writer.write("pesel: " + users.pesel);
         writer.newLine();
-        users.setName();
         writer.write("name: " + users.name);
         writer.newLine();
-        users.setAddress();
         writer.write("address: " + users.address);
         writer.newLine();
-        users.setEmail();
         writer.write("email: " + users.email);
         writer.newLine();
         writer.write("------------");
