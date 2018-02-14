@@ -41,20 +41,17 @@ public class Users {
     public String getName() {
         return name;
     }
-
     public String getPesel() {
         return pesel;
     }
-
     public String getAddress() {
         return address;
     }
-
     public String getEmail() {
         return email;
     }
 
-    //setter
+
     public void setName() {
         Scanner inputName = new Scanner(System.in);
         System.out.print("name: ");

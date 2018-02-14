@@ -16,7 +16,7 @@ public class FileManager {
 
         Scanner writeAnswer = new Scanner(System.in);
 
-        System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
+        System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
         answer = writeAnswer.nextInt();
 
         while (answer !=4)
@@ -25,25 +25,25 @@ public class FileManager {
             {
                 case 1:
                     FileManager.addUser();
-                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
+                    System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
                     answer = writeAnswer.nextInt();
                     break;
 
                 case 2:
                     FileManager.findUser();
-                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
+                    System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
                     answer = writeAnswer.nextInt();
                     break;
 
                 case 3:
                     FileManager.deleteUser();
-                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
+                    System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
                     answer = writeAnswer.nextInt();
                     break;
 
                 default:
                     System.out.println("\nthis is not correct, try again\n\n");
-                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
+                    System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
                     answer = writeAnswer.nextInt();
                     break;
             }
@@ -79,9 +79,8 @@ public class FileManager {
         String userToDelete;
         String line = "";
 
-        RandomAccessFile file = new RandomAccessFile("usersDatabase.txt", "rw");
-        BufferedWriter writer = new BufferedWriter(new FileWriter("usersDatabaseTemp.txt", true));
-        writer.flush();
+        RandomAccessFile file = new RandomAccessFile("src" + File.separator + "usersDatabase.txt", "rw");
+        BufferedWriter writer = new BufferedWriter(new FileWriter("temp" +File.separator + "usersDatabaseTemp.txt"));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -99,6 +98,9 @@ public class FileManager {
                     continue;
                 }
             }
+            if (line.contains("null"))
+                line = "------------";
+
             writer.write(line);
             writer.newLine();
         }
@@ -106,17 +108,21 @@ public class FileManager {
         writer.close();
         file.close();
 
-        BufferedReader reader = new BufferedReader(new FileReader("usersDatabaseTemp.txt"));
-        BufferedWriter writer2 = new BufferedWriter(new FileWriter("usersDatabase.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("temp" +File.separator + "usersDatabaseTemp.txt"));
+        BufferedWriter writer2 = new BufferedWriter(new FileWriter("src" + File.separator + "usersDatabase.txt"));
 
         while ((line = reader.readLine()) != null)
         {
             writer2.write(line);
             writer2.newLine();
         }
-
         reader.close();
-        writer.close();
+        writer2.close();
+
+        BufferedWriter toCleanTempFile = new BufferedWriter(new FileWriter("temp" +File.separator + "usersDatabaseTemp.txt"));
+        toCleanTempFile.write("jestem pusty w środku :(");
+        toCleanTempFile.flush();
+        toCleanTempFile.close();
     }
 
     public static void findUser() throws IOException

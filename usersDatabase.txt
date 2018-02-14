@@ -1,12 +1,7 @@
-pesel: 90100906256
-name: Pawel
-address: Warcislawa 27f/2
-email: kaliszewskipawel@o2.pl
-------------
 pesel: 98765432101
 name: Jacek
-address: Biała /4
-email: 3
+address: Biala 3/4
+email: jacek@gmail.com
 ------------
 pesel: 12345678901
 name: Karol
@@ -28,11 +23,6 @@ name: Three
 address: Third 3/3
 email: three@gmail.com
 ------------
-pesel: 44444444444
-name: Four
-address: Fourth 4/4
-email: four@gmail.com
-------------
 pesel: 55555555555
 name: Five
 address: Fifth 5/5
@@ -53,11 +43,6 @@ name: Eught
 address: Eight 8/8
 email: eight@gmail.com
 ------------
-pesel: 99999999999
-name: Nine
-address: Ninth 9/9
-email: nine@gmail.com
-------------
 pesel: 45645645645
 name: qwe
 address: qwe 34/34
@@ -67,4 +52,9 @@ pesel: 12312312312
 name: One Two Three
 address: One Two Three 123/123
 email: onetwothree@gmail.com
+------------
+pesel: 23423423423
+name: Two Three Four
+address: Two Three Four 234/234
+email: TwoThreeFour@gmail.com
 ------------
