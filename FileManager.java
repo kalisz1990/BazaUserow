@@ -16,28 +16,34 @@ public class FileManager {
 
         Scanner writeAnswer = new Scanner(System.in);
 
-        System.out.println("add another user: 1\nfind user: 2 \nexit: 3\n");
+        System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
         answer = writeAnswer.nextInt();
 
-        while (answer !=3)
+        while (answer !=4)
         {
             switch (answer)
             {
                 case 1:
                     FileManager.addUser();
-                    System.out.println("\nadd another user: 1\nfind user: 2 \nexit: 3\n");
+                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
                     answer = writeAnswer.nextInt();
                     break;
 
                 case 2:
                     FileManager.findUser();
-                    System.out.println("\nadd another user: 1\nfind user: 2 \nexit: 3\n");
+                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
+                    answer = writeAnswer.nextInt();
+                    break;
+
+                case 3:
+                    FileManager.deleteUser();
+                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
                     answer = writeAnswer.nextInt();
                     break;
 
                 default:
                     System.out.println("\nthis is not correct, try again\n\n");
-                    System.out.println("add another user: 1\nfind user: 2 \nexit: 3\n");
+                    System.out.println("\nadd another user: 1\nfind user: 2 \ndelete user 3: \nexit: 4\n");
                     answer = writeAnswer.nextInt();
                     break;
             }
@@ -64,6 +70,51 @@ public class FileManager {
         writer.write("------------");
         writer.newLine();
 
+        writer.close();
+    }
+
+    public static void deleteUser() throws IOException
+    {
+        String userToDelete;
+        String line = "";
+
+        RandomAccessFile file = new RandomAccessFile("usersDatabase.txt", "rw");
+        BufferedWriter writer = new BufferedWriter(new FileWriter("usersDatabaseTemp.txt", true));
+        writer.flush();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("\npesel of user to delete: ");
+         userToDelete = scanner.nextLine();
+
+        while ((line = file.readLine()) != null) {
+            if (line.contains("------------")) {
+                line += "\n";
+                line += file.readLine();
+                if (line.contains(userToDelete)) {
+                    for (int i = 0; i < 3; i++) {
+                        file.readLine();
+                    }
+                    continue;
+                }
+            }
+            writer.write(line);
+            writer.newLine();
+        }
+
+        writer.close();
+        file.close();
+
+        BufferedReader reader = new BufferedReader(new FileReader("usersDatabaseTemp.txt"));
+        BufferedWriter writer2 = new BufferedWriter(new FileWriter("usersDatabase.txt"));
+
+        while ((line = reader.readLine()) != null)
+        {
+            writer2.write(line);
+            writer2.newLine();
+        }
+
+        reader.close();
         writer.close();
     }
 
