@@ -5,100 +5,90 @@ public class FileManager {
 
     public static void createFile() throws IOException {
 
-        // @mk: zasadniczo nie zapisujemy niczego do katalogu src/ - to jest katalog z plikami źródłowymi, katalog db/ byłby lepszy
-        File plik = new File("src" + File.separator + "usersDatabase.txt");
+        File plik = new File("db" + File.separator + "usersDatabase.txt");
 
-        // @mk: tu się trochę przypierdalam - ale takie konstrukcje są strasznie mało czytelne - zawsze używaj "{" ewentulnie one linery
-        if (!plik.exists())
+        if (!plik.exists()) {
             plik.createNewFile();
-    }
-
-    public static void searchMenu() throws IOException {
-        int answer;
-
-        Scanner writeAnswer = new Scanner(System.in);
-
-        System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
-        answer = writeAnswer.nextInt();
-
-        while (answer != 4) {
-            switch (answer) {
-                case 1:
-                    // @mk: niby wszystko fajnie ale wszystko na statycznych metodach
-                    FileManager.addUser();
-                    break;
-
-                case 2:
-                    FileManager.findUser();
-                    break;
-
-                case 3:
-                    FileManager.deleteUser();
-                    break;
-
-                default:
-                    System.out.println("\nthis is not correct, try again\n\n");
-                    break;
-            }
-
-
-            // @mk: zduplikowany kod wyciągnąłem na zewnątrz
-            System.out.println("\nadd another user 1: \nfind user 2: \ndelete user 3: \nexit 4:\n");
-            answer = writeAnswer.nextInt();
-
         }
     }
 
     public static void addUser() throws IOException {
-        Users          users  = new Users();
-        BufferedWriter writer = new BufferedWriter(new FileWriter("src" + File.separator + "usersDatabase.txt", true));
+        UserManager userManager = new UserManager();
+        BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt", true));
 
-        users.setPesel();
-        users.setName();
-        users.setAddress();
-        users.setEmail();
+        userManager.pesel();
 
-        writer.write("pesel: " + users.pesel);
-        writer.newLine();
-        writer.write("name: " + users.name);
-        writer.newLine();
-        writer.write("address: " + users.address);
-        writer.newLine();
-        writer.write("email: " + users.email);
-        writer.newLine();
-        writer.write("------------");
-        writer.newLine();
+        if (!userManager.getPesel().equals("")) {
+            userManager.name();
+            userManager.address();
+            userManager.email();
 
-        writer.close();
+            writer.write("pesel: " + userManager.getPesel());
+            writer.newLine();
+            writer.write("name: " + userManager.getName());
+            writer.newLine();
+            writer.write("address: " + userManager.getAddress());
+            writer.newLine();
+            writer.write("email: " + userManager.getEmail());
+            writer.newLine();
+            writer.write("------------");
+            writer.newLine();
+
+            writer.close();
+        }
+    }
+
+    public static void findUser() throws IOException {
+        String search = "";
+        String line   = "";
+
+        Scanner        searchUser = new Scanner(System.in);
+        BufferedReader reader     = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+
+        System.out.print("\npesel of user you want to find: ");
+        search = searchUser.nextLine();
+        System.out.println();
+
+        while ((line = reader.readLine()) != null) {
+            if (line.contains(search)) {
+                System.out.println(line);
+                for (int i = 0; i < 3; i++) {
+                    System.out.println(reader.readLine());
+                }
+                System.out.println();
+                break;
+            }
+            else if (reader.readLine() != null){
+                System.out.println("no user in database\n");
+                break;
+            }
+        }
+
+        reader.close();
     }
 
     public static void deleteUser() throws IOException {
         String userToDelete;
         String line = "";
 
-        RandomAccessFile file   = new RandomAccessFile("src" + File.separator + "usersDatabase.txt", "rw");
+        RandomAccessFile  file = new RandomAccessFile("db" + File.separator + "usersDatabase.txt", "rw");
 
-        // @mk: zasadniczo za każdym wywołaniem jakiejkolwiek funkcji tworzysz od nowa BufferedWriter, lepiej byłoby stworzyć to na początku a później tylko przekazywać instancje
-        BufferedWriter   writer = new BufferedWriter(new FileWriter("temp" + File.separator + "usersDatabaseTemp.txt"));
-
-        Scanner scanner = new Scanner(System.in);
+        BufferedWriter writer  = new BufferedWriter(new FileWriter("temp" + File.separator + "usersDatabaseTemp.txt"));
+        Scanner        scanner = new Scanner(System.in);
 
         System.out.print("\npesel of user to delete: ");
         userToDelete = scanner.nextLine();
 
         while ((line = file.readLine()) != null) {
-            if (line.contains("------------")) {
-                line += "\n";
-                line += file.readLine();
-                if (line.contains(userToDelete)) {
-                    for (int i = 0; i < 3; i++) {
-                        file.readLine();
-                    }
-                    continue;
+            if (line.contains(userToDelete)) {
+                for (int i = 0; i < 4; i++) {
+                    file.readLine();
                 }
+                continue;
             }
-            if (line.contains("null"))
+            if (line.contains("null")) {
                 line = "------------";
+            }
 
             writer.write(line);
             writer.newLine();
@@ -107,41 +97,20 @@ public class FileManager {
         writer.close();
         file.close();
 
-        BufferedReader reader  = new BufferedReader(new FileReader("temp" + File.separator + "usersDatabaseTemp.txt"));
-        BufferedWriter writer2 = new BufferedWriter(new FileWriter("src" + File.separator + "usersDatabase.txt"));
+        BufferedReader  reader = new BufferedReader(new FileReader("temp" + File.separator + "usersDatabaseTemp.txt"));
+        writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
 
         while ((line = reader.readLine()) != null) {
-            writer2.write(line);
-            writer2.newLine();
+            writer.write(line);
+            writer.newLine();
         }
         reader.close();
-        writer2.close();
+        writer.close();
 
-        BufferedWriter toCleanTempFile = new BufferedWriter(new FileWriter("temp" + File.separator + "usersDatabaseTemp.txt"));
-        toCleanTempFile.write("jestem pusty w środku :(");
-        toCleanTempFile.flush();
-        toCleanTempFile.close();
-    }
+        writer = new BufferedWriter(new FileWriter("temp" + File.separator + "usersDatabaseTemp.txt"));
 
-    public static void findUser() throws IOException {
-        String search = "";
-        String line   = "";
-
-        Scanner        searchUser = new Scanner(System.in);
-        BufferedReader reader     = new BufferedReader(new FileReader("src" + File.separator + "usersDatabase.txt"));
-
-        System.out.print("\npesel of person you want to find: ");
-        search = searchUser.nextLine();
-        System.out.println();
-
-        while ((line = reader.readLine()) != null) {
-            if (line.contains(search)) {
-                System.out.println(line);
-                for (int i = 0; i < 3; i++)
-                    System.out.println(reader.readLine());
-                break;
-            }
-        }
-        reader.close();
+        writer.write("jestem pusty w środku :(");
+        writer.flush();
+        writer.close();
     }
 }
