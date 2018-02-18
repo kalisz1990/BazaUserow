@@ -40,30 +40,28 @@ public class FileManager {
 
     public static void findUser() throws IOException {
         String search = "";
-        String line   = "";
+        String line = "";
 
-        Scanner        searchUser = new Scanner(System.in);
-        BufferedReader reader     = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+        Scanner searchUser = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
 
         System.out.print("\npesel of user you want to find: ");
         search = searchUser.nextLine();
         System.out.println();
 
-        while ((line = reader.readLine()) != null) {
-            if (line.contains(search)) {
-                System.out.println(line);
-                for (int i = 0; i < 3; i++) {
-                    System.out.println(reader.readLine());
+            while ((line = reader.readLine()) != null) {
+                if (line.contains(search)) {
+                    System.out.println(line);
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println(reader.readLine());
+                    }
+                    System.out.println();
+                    break;
                 }
-                System.out.println();
-                break;
             }
-            else if (reader.readLine() != null){
-                System.out.println("no user in database\n");
-                break;
-            }
-        }
-
+                if (reader.readLine() == null) {
+                    System.out.println("no user in database\n");
+                }
         reader.close();
     }
 
