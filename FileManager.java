@@ -70,6 +70,7 @@ public class FileManager implements manager {
     public void findUser() throws IOException {
         String search = "";
         String line = "";
+        String tString = "empty";
 
         Scanner searchUser = new Scanner(System.in);
         BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
@@ -78,15 +79,16 @@ public class FileManager implements manager {
         search = searchUser.nextLine();
         System.out.println();
 
-            while ((line = reader.readLine()) != null) {
-                if (line.contains(search)) {
-                    System.out.println(line + "\n");
-                    break;
-                }
+        while ((line = reader.readLine()) != null) {
+            if (line.contains(search)) {
+                System.out.println(line + "\n");
+                tString = "found";
+                break;
             }
-                if (reader.readLine() == null) {
-                    System.out.println("no user in database\n");
-                }
+        }
+        if ((reader.readLine() == null) && (tString.equals("empty"))) {
+            System.out.println("no user in database\n");
+        }
         reader.close();
     }
 
