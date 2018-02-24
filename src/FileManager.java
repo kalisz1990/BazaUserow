@@ -1,3 +1,5 @@
+package src;
+
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -48,20 +50,6 @@ public class FileManager implements manager {
 
             writer.write(json.toJson(user));
             writer.newLine();
-
-            /*
-             ZAPASOWY KOD
-            writer.write("pesel: " + userManager.getPesel());
-            writer.newLine();
-            writer.write("name: " + userManager.getName());
-            writer.newLine();
-            writer.write("address: " + userManager.getAddress());
-            writer.newLine();
-            writer.write("email: " + userManager.getEmail());
-            writer.newLine();
-            writer.write("------------");
-            writer.newLine();
-            */
 
             writer.close();
         }
