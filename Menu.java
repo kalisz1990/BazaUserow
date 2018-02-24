@@ -1,9 +1,15 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Menu {
+interface menuSearch {
+    void searchMenu() throws IOException;
+    }
 
-    public static void searchMenu() throws IOException {
+public class Menu implements menuSearch, manager {
+    manager manager = new FileManager();
+
+
+    public void searchMenu() throws IOException{
         int answer;
 
         Scanner writeAnswer = new Scanner(System.in);
@@ -17,33 +23,53 @@ public class Menu {
                            "\n: ");
         answer = writeAnswer.nextInt();
 
-        while (answer != 4) {
-            switch (answer) {
-                case 1:
-                    //!!!!!!!!!!!!!!!!!! // @mk: niby wszystko fajnie ale wszystko na statycznych metodach
-                    FileManager.addUser();
-                    break;
+            while (answer != 4) {
+                switch (answer) {
+                    case 1:
+                        //!!!!!!!!!!!!!!!!!! // @mk: niby wszystko fajnie ale wszystko na statycznych metodach
+                        manager.addUser();
+                        break;
 
-                case 2:
-                    FileManager.findUser();
-                    break;
+                    case 2:
+                        manager.findUser();
+                        break;
 
-                case 3:
-                    FileManager.deleteUser();
-                    break;
+                    case 3:
+                        manager.deleteUser();
+                        break;
 
-                default:
-                    System.out.println("\nthis is not correct, try again\n\n");
-                    break;
+                    default:
+                        System.out.println("\nthis is not correct, try again\n\n");
+                        break;
+                }
+
+                System.out.print("|----------------------|" +
+                        "\n|1: add another user:  |" +
+                        "\n|2: find user:         |" +
+                        "\n|3: delete user:       |" +
+                        "\n|4: exit               |" +
+                        "\n|----------------------|\n" + ": ");
+                answer = writeAnswer.nextInt();
             }
-
-            System.out.print("|----------------------|" +
-                               "\n|1: add another user:  |" +
-                               "\n|2: find user:         |" +
-                               "\n|3: delete user:       |" +
-                               "\n|4: exit               |" +
-                               "\n|----------------------|\n" + ": ");
-            answer = writeAnswer.nextInt();
         }
+
+    @Override
+    public void createFile() throws IOException {
+
+    }
+
+    @Override
+    public void addUser() throws IOException {
+
+    }
+
+    @Override
+    public void findUser() throws IOException {
+
+    }
+
+    @Override
+    public void deleteUser() throws IOException {
+
     }
 }

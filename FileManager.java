@@ -3,9 +3,16 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.util.Scanner;
 
-public class FileManager {
+interface manager {
+    void createFile() throws IOException;
+    void addUser() throws IOException;
+    void findUser() throws IOException;
+    void deleteUser() throws IOException;
+}
 
-    public static void createFile() throws IOException {
+public class FileManager implements manager {
+
+    public void createFile() throws IOException {
 
         File plik = new File("db" + File.separator + "usersDatabase.txt");
 
@@ -14,7 +21,7 @@ public class FileManager {
         }
     }
 
-    public static void addUser() throws IOException {
+    public void addUser() throws IOException {
         User           user    = new User();
         BufferedWriter writer  = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt", true));
         Gson           json    = new Gson();
@@ -60,7 +67,7 @@ public class FileManager {
         }
     }
 
-    public static void findUser() throws IOException {
+    public void findUser() throws IOException {
         String search = "";
         String line = "";
 
@@ -83,7 +90,7 @@ public class FileManager {
         reader.close();
     }
 
-    public static void deleteUser() throws IOException {
+    public void deleteUser() throws IOException {
         String userToDelete;
         String line = "";
 

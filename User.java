@@ -2,8 +2,8 @@ import java.io.*;
 
 public class User implements Serializable {
 
-    // @mk: dlaczego te właściwości są publiczne -> do manipulacji tymi danymi masz już settery i gettery, do nauki: enkapsulacja
     // @mk: do nauki wyłapywac Expection'y
+    // @mk: ta klasa "User" wygląda mi na tzw Encje (->google), zasadniczo nie powinineś się tu odwoływać do konsoli
 
     private String pesel = "";
     private String name = "";
@@ -99,8 +99,4 @@ public class User implements Serializable {
     public String toString() {
         return this.pesel + ", " + this.name + ", " + this.street + " " + this.bNumber + "/" + this.aNumber + ", " + this.email;
     }
-
-    // @mk: ta klasa "User" wygląda mi na tzw Encje (->google), zasadniczo nie powinineś się tu odwoływać do konsoli
-    // @mk: settery z zasady działają trochę inaczej one przyjmują argument setName(String name) { this.name = name; }
-    // @mk: natomiast całą komunikację lepiej byłoby mieć gdzieś w osobnej klasie
 }
