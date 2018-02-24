@@ -1,0 +1,17 @@
+zrob apke ktora pozwoli Ci dodawac userow, usuwac, wyszukac i wyswietlac
+wyswietlic liste wszystkich po imieniu i nazwisku
+dodatkowo detale konkretnego usera (jakies tam adres czy cos)
+i trzymaj to w jakiejs bazie (w sensie w jakims pliku tekstowym)
+dodatkowo serializuj do JSONa
+i tyle 😀 wymysl sam co i jak
+
+poczytaj o serializacji do jsona i I/O do pliku
+pomysl jak potworzyc klasy itp
+uznaj, ze moga byc 2 osoby z tkaim samym imieniem i nazwiskiem
+ale np nie z takim samym peselem
+
+{"pesel":"12312312312","name":"Pafc","address":"asd 123/123","email":"pafc @gmail.com"}
+{"pesel":"12345678912","name":"pdlf","address":"gdfl 987/987","email":"gdf"}
+{"pesel":"12345678913","name":"pdlf","address":"gdfl 987/987","email":"gdf"}
+{"pesel":"12345678914","name":"pdlf","address":"gdfl 987/987","email":"gdf"}
+{"pesel":"12345678915","name":"pdlf","address":"gdfl 987/987","email":"gdf"}
