@@ -21,27 +21,21 @@ public class User implements Serializable {
     String getPesel() {
         return pesel;
     }
-
     String getName() {
         return name;
     }
-
     String getStreet() {
         return street;
     }
-
     String getaNumber() {
         return aNumber;
     }
-
     String getbNumber() {
         return bNumber;
     }
-
     String getEmail() {
         return email;
     }
-
     String getAddress() {
         return street + " " + bNumber + "/" + aNumber;
     }
@@ -70,27 +64,21 @@ public class User implements Serializable {
         }
         return pesel;
     }
-
     void setName(String name) {
         this.name = name;
     }
-
     void setStreet(String street) {
         this.street = street;
     }
-
     void setaNumber(String aNumber) {
         this.aNumber = aNumber;
     }
-
     void setbNumber(String bNumber) {
         this.bNumber = bNumber;
     }
-
     void setAddress(String street, String aNumber, String bNumber) {
         this.address = street + " " + bNumber + "/" + aNumber;
     }
-
     void setEmail(String email) {
         this.email = email;
     }

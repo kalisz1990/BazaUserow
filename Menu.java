@@ -26,7 +26,6 @@ public class Menu implements menuSearch, manager {
             while (answer != 4) {
                 switch (answer) {
                     case 1:
-                        //!!!!!!!!!!!!!!!!!! // @mk: niby wszystko fajnie ale wszystko na statycznych metodach
                         manager.addUser();
                         break;
 
