@@ -1,14 +1,18 @@
 package src;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 interface manager {
     void createFile() throws IOException;
-    void addUser() throws IOException;
-    void findUser() throws IOException;
+    void addUser()    throws IOException;
+    void findUser()   throws IOException;
     void deleteUser() throws IOException;
 }
 
@@ -24,10 +28,12 @@ public class FileManager implements manager {
     }
 
     public void addUser() throws IOException {
-        User           user    = new User();
-        BufferedWriter writer  = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt", true));
-        Gson           json    = new Gson();
-        Scanner        scanner = new Scanner(System.in);
+        String line = "";
+        String tString = "";
+
+        User    user    = new User();
+        Gson    json    = new GsonBuilder().setPrettyPrinting().create();
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("pesel: ");
         user.setPesel(scanner.nextLine());
@@ -45,39 +51,56 @@ public class FileManager implements manager {
             user.setEmail(scanner.nextLine());
             user.setAddress(user.getStreet(), user.getbNumber(), user.getaNumber());
 
+           // serializacja JSON do pliku //
 
-           // serializacja JSON do pliku
+            // zapis z pliku do Stringa
+           BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+           while ((line = reader.readLine()) != null) {
+               tString += line;
+           }
+           reader.close();
 
-            writer.write(json.toJson(user));
-            writer.newLine();
+           //deserializacja
+           LinkedList <User> linkedList = json.fromJson(tString, new TypeToken <LinkedList<User>> (){}.getType());
+           linkedList.addLast(user);
+           line = json.toJson(linkedList);
 
-            writer.close();
+           //zapis do pliku
+           BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
+           writer.write(line);
+           writer.newLine();
+           writer.close();
         }
     }
 
     public void findUser() throws IOException {
-        String search = "";
+        String search = "12345678914";
         String line = "";
-        String tString = "empty";
+        String tString = "";
 
-        Scanner searchUser = new Scanner(System.in);
+        Gson json = new GsonBuilder().setPrettyPrinting().create();
+
+//        Scanner searchUser = new Scanner(System.in);
+//
+//        System.out.print("\npesel of user you want to find: ");
+//        search = searchUser.nextLine();
+//        System.out.println();
+
+        // zapis z pliku do Stringa
         BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
-
-        System.out.print("\npesel of user you want to find: ");
-        search = searchUser.nextLine();
-        System.out.println();
-
         while ((line = reader.readLine()) != null) {
-            if (line.contains(search)) {
-                System.out.println(line + "\n");
-                tString = "found";
-                break;
-            }
-        }
-        if ((reader.readLine() == null) && (tString.equals("empty"))) {
-            System.out.println("no user in database\n");
+            tString += line;
         }
         reader.close();
+        // deserializacja ze Stringa z pliku do ArrayList
+        ArrayList <User> arrayList = json.fromJson(tString, new TypeToken <ArrayList<User>> (){}.getType());
+
+        for (User user : arrayList) {
+            if (user.getPesel() != null && user.getPesel().contains(search)) {
+                String find = json.toJson(user);
+                System.out.println(find);
+            }
+        }
     }
 
     public void deleteUser() throws IOException {
