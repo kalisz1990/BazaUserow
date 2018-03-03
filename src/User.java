@@ -7,13 +7,13 @@ public class User implements Serializable {
     // @mk: do nauki wyłapywac Expection'y
     // @mk: ta klasa "User" wygląda mi na tzw Encje (->google), zasadniczo nie powinineś się tu odwoływać do konsoli
 
-    private String pesel = "";
-    private String name = "";
+    private String pesel   = "";
+    private String name    = "";
     private String address = "";
-    private transient String street = "";
+    private transient String street  = "";
     private transient String bNumber = "";
     private transient String aNumber = "";
-    private String email = "";
+    private String email   = "";
 
 
     User() {

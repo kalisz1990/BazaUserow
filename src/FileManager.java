@@ -15,26 +15,44 @@ interface manager {
     void findUser()   throws IOException;
     void deleteUser() throws IOException;
 }
-
 public class FileManager implements manager {
 
+    private boolean isFileEmpty () throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+        if (reader.readLine() == null) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
+            writer.write("[]");
+            writer.close();
+            reader.close();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public void createFile() throws IOException {
 
         File plik = new File("db" + File.separator + "usersDatabase.txt");
 
         if (!plik.exists()) {
             plik.createNewFile();
+            isFileEmpty();
         }
     }
 
     public void addUser() throws IOException {
         String line = "";
         String tString = "";
+        String tJson = "";
 
-        User    user    = new User();
-        Gson    json    = new GsonBuilder().setPrettyPrinting().create();
+        User user = new User();
+        Gson json = new GsonBuilder().setPrettyPrinting().create();
         Scanner scanner = new Scanner(System.in);
 
+        //sprawdzanie czy plik jest pusty i dodanie znaku listy
+        isFileEmpty();
+
+        // kontakt z uzytkownikiem konsoli i zapisanie danych setterem
         System.out.print("pesel: ");
         user.setPesel(scanner.nextLine());
         if (!user.getPesel().equals("")) {
@@ -50,94 +68,116 @@ public class FileManager implements manager {
             System.out.print("email: ");
             user.setEmail(scanner.nextLine());
             user.setAddress(user.getStreet(), user.getbNumber(), user.getaNumber());
+        }
+        // zapis z pliku do Stringa
+        BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
 
-           // serializacja JSON do pliku //
+        if (!isFileEmpty()){
+            while ((line = reader.readLine()) != null) {
+                tString += line;
+            }
+            reader.close();
 
-            // zapis z pliku do Stringa
-           BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
-           while ((line = reader.readLine()) != null) {
-               tString += line;
-           }
-           reader.close();
+            //deserializacja ze Stringa do LinkedList oraz dodanie nowego uzytkownika
+            LinkedList<User> linkedList = json.fromJson(tString, new TypeToken<LinkedList<User>>() {
+            }.getType());
+            linkedList.addLast(user);
 
-           //deserializacja
-           LinkedList <User> linkedList = json.fromJson(tString, new TypeToken <LinkedList<User>> (){}.getType());
-           linkedList.addLast(user);
-           line = json.toJson(linkedList);
-
-           //zapis do pliku
-           BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
-           writer.write(line);
-           writer.newLine();
-           writer.close();
+            //zapis do pliku z linkedList
+            tJson = json.toJson(linkedList);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
+            writer.write(tJson);
+            writer.newLine();
+            writer.close();
         }
     }
 
     public void findUser() throws IOException {
-        String search = "12345678914";
+        String search = "";
         String line = "";
         String tString = "";
+        int count = 0;
 
         Gson json = new GsonBuilder().setPrettyPrinting().create();
+        Scanner searchUser = new Scanner(System.in);
 
-//        Scanner searchUser = new Scanner(System.in);
-//
-//        System.out.print("\npesel of user you want to find: ");
-//        search = searchUser.nextLine();
-//        System.out.println();
+        //sprawdzanie czy plik jest pusty i dodanie znalu listy []
+         isFileEmpty();
 
         // zapis z pliku do Stringa
-        BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
-        while ((line = reader.readLine()) != null) {
-            tString += line;
-        }
-        reader.close();
-        // deserializacja ze Stringa z pliku do ArrayList
-        ArrayList <User> arrayList = json.fromJson(tString, new TypeToken <ArrayList<User>> (){}.getType());
+        if (!isFileEmpty()) {
+            System.out.print("\npesel of user you want to find: ");
+            search = searchUser.nextLine();
+            System.out.println();
 
-        for (User user : arrayList) {
-            if (user.getPesel() != null && user.getPesel().contains(search)) {
-                String find = json.toJson(user);
-                System.out.println(find);
+            BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+            while ((line = reader.readLine()) != null) {
+                tString += line;
+            }
+            reader.close();
+            // deserializacja ze Stringa, pliku do ArrayList
+            ArrayList<User> arrayList = json.fromJson(tString, new TypeToken<ArrayList<User>>() {
+            }.getType());
+
+            for (User user : arrayList) {
+                if (user.getPesel() != null && user.getPesel().contains(search)) {
+                    String find = json.toJson(user);
+                    System.out.println(find);
+                    break;
+                }
+                count++;
+            }
+            if (count == arrayList.size()) {
+                System.out.println("no user in database");
             }
         }
     }
 
     public void deleteUser() throws IOException {
-        String userToDelete;
+        String userToDelete = "";
         String line = "";
+        String tString = "";
+        String tJson = "";
+        int count = 0;
 
-        RandomAccessFile file    = new RandomAccessFile("db" + File.separator + "usersDatabase.txt", "rw");
-        BufferedWriter   writer  = new BufferedWriter(new FileWriter("temp" + File.separator + "usersDatabaseTemp.txt"));
-        Scanner          scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        Gson json = new GsonBuilder().setPrettyPrinting().create();
 
-        System.out.print("\npesel of user to delete: ");
-        userToDelete = scanner.nextLine();
+        //sprawdzanie czy plik jest pusty
+        isFileEmpty();
 
-        while ((line = file.readLine()) != null) {
-            if (line.contains(userToDelete)) {
-                line = file.readLine();
+        if (!isFileEmpty()) {
+            System.out.print("\npesel of user to delete: ");
+            userToDelete = scanner.nextLine();
+
+            BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+            while ((line = reader.readLine()) != null) {
+                tString += line;
             }
-            writer.write(line);
+            reader.close();
+
+            // deserializacja ze Stringa z pliku do LinkedList
+            LinkedList<User> linkedList = json.fromJson(tString, new TypeToken<LinkedList<User>>() {
+            }.getType());
+
+            for (User user : linkedList) {
+                if (user.getPesel() != null && user.getPesel().contains(userToDelete)) {
+                    linkedList.remove(user);
+                    System.out.println("user remoeved");
+                    break;
+                }
+                count++;
+            }
+            if (count == linkedList.size()) {
+                System.out.println("no user in database");
+            }
+
+            //zapis do pliku
+            tJson = json.toJson(linkedList);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
+            writer.write(tJson);
             writer.newLine();
+            writer.close();
         }
-        writer.close();
-        file.close();
-
-        BufferedReader reader = new BufferedReader(new FileReader("temp" + File.separator + "usersDatabaseTemp.txt"));
-        writer                = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
-
-        while ((line = reader.readLine()) != null) {
-            writer.write(line);
-            writer.newLine();
-        }
-        reader.close();
-        writer.close();
-
-        writer = new BufferedWriter(new FileWriter("temp" + File.separator + "usersDatabaseTemp.txt"));
-
-        writer.write("jestem pusty w środku :(");
-        writer.flush();
-        writer.close();
     }
 }
