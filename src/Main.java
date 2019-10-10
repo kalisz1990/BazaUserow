@@ -2,13 +2,12 @@ package src;
 
 import java.io.IOException;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
 
         menuSearch menu = new Menu();
         manager fileManager = new FileManager();
-
 
         try {
             fileManager.createFile();
@@ -17,6 +16,6 @@ public class Main {
         catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
-

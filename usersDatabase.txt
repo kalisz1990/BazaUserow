@@ -1,0 +1,32 @@
+[
+  {
+    "pesel": "12312312310",
+    "name": "Pafc",
+    "address": "Pafc 0/0",
+    "email": "pafc@gmail.com"
+  },
+  {
+    "pesel": "12312312311",
+    "name": "Pafc1",
+    "address": "Pafc 1/1",
+    "email": "pafc1@gmail.com"
+  },
+  {
+    "pesel": "12312312312",
+    "name": "Pafc2",
+    "address": "Pafc 2/2",
+    "email": "pafc2@gmail.com"
+  },
+  {
+    "pesel": "12312312313",
+    "name": "Pafc3",
+    "address": "Pafc 3/3",
+    "email": "pafc3@gmail.com"
+  },
+  {
+    "pesel": "12312312310",
+    "name": "Pafc",
+    "address": "Pafc 4/4",
+    "email": "pafc@gmail.com"
+  }
+]

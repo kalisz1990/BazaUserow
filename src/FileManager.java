@@ -11,13 +11,23 @@ import java.util.Scanner;
 
 interface manager {
     void createFile() throws IOException;
-    void addUser()    throws IOException;
-    void findUser()   throws IOException;
+
+    void addUser() throws IOException;
+
+    void findUser() throws IOException;
+
     void deleteUser() throws IOException;
 }
+
+// generics, squlite, konstrukcje API access point interface,
+// API - REST z czym to się je
+// SQL - MySQL  - relacyjne bazy danych , nierelacyjne bazy danych (bardziej zaawansowany temat - mapowanie obiektowo - relacyjne)
+// unit testing
+
 public class FileManager implements manager {
 
-    private boolean isFileEmpty () throws IOException {
+    private boolean isFileEmpty() throws IOException {
+        // podzielić na 2 osobne lub zmienic nazwe-
         BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
         if (reader.readLine() == null) {
             BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
@@ -25,11 +35,11 @@ public class FileManager implements manager {
             writer.close();
             reader.close();
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     public void createFile() throws IOException {
 
         File plik = new File("db" + File.separator + "usersDatabase.txt");
@@ -41,9 +51,9 @@ public class FileManager implements manager {
     }
 
     public void addUser() throws IOException {
-        String line = "";
-        String tString = "";
-        String tJson = "";
+        String line;
+        StringBuilder tString = new StringBuilder();
+        String tJson;
 
         User user = new User();
         Gson json = new GsonBuilder().setPrettyPrinting().create();
@@ -72,14 +82,14 @@ public class FileManager implements manager {
         // zapis z pliku do Stringa
         BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
 
-        if (!isFileEmpty()){
+        if (!isFileEmpty()) {
             while ((line = reader.readLine()) != null) {
-                tString += line;
+                tString.append(line);
             }
             reader.close();
 
             //deserializacja ze Stringa do LinkedList oraz dodanie nowego uzytkownika
-            LinkedList<User> linkedList = json.fromJson(tString, new TypeToken<LinkedList<User>>() {
+            LinkedList<User> linkedList = json.fromJson(tString.toString(), new TypeToken<LinkedList<User>>() {
             }.getType());
             linkedList.addLast(user);
 
@@ -93,16 +103,16 @@ public class FileManager implements manager {
     }
 
     public void findUser() throws IOException {
-        String search = "";
-        String line = "";
-        String tString = "";
+        String search;
+        String line;
+        StringBuilder tString = new StringBuilder();
         int count = 0;
 
         Gson json = new GsonBuilder().setPrettyPrinting().create();
         Scanner searchUser = new Scanner(System.in);
 
         //sprawdzanie czy plik jest pusty i dodanie znalu listy []
-         isFileEmpty();
+        isFileEmpty();
 
         // zapis z pliku do Stringa
         if (!isFileEmpty()) {
@@ -112,11 +122,11 @@ public class FileManager implements manager {
 
             BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
             while ((line = reader.readLine()) != null) {
-                tString += line;
+                tString.append(line);
             }
             reader.close();
             // deserializacja ze Stringa, pliku do ArrayList
-            ArrayList<User> arrayList = json.fromJson(tString, new TypeToken<ArrayList<User>>() {
+            ArrayList<User> arrayList = json.fromJson(tString.toString(), new TypeToken<ArrayList<User>>() {
             }.getType());
 
             for (User user : arrayList) {
@@ -134,10 +144,10 @@ public class FileManager implements manager {
     }
 
     public void deleteUser() throws IOException {
-        String userToDelete = "";
-        String line = "";
-        String tString = "";
-        String tJson = "";
+        String userToDelete;
+        String line;
+        StringBuilder tString = new StringBuilder();
+        String tJson;
         int count = 0;
 
         Scanner scanner = new Scanner(System.in);
@@ -152,12 +162,12 @@ public class FileManager implements manager {
 
             BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
             while ((line = reader.readLine()) != null) {
-                tString += line;
+                tString.append(line);
             }
             reader.close();
 
             // deserializacja ze Stringa z pliku do LinkedList
-            LinkedList<User> linkedList = json.fromJson(tString, new TypeToken<LinkedList<User>>() {
+            LinkedList<User> linkedList = json.fromJson(tString.toString(), new TypeToken<LinkedList<User>>() {
             }.getType());
 
             for (User user : linkedList) {
