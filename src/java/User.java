@@ -1,11 +1,8 @@
-package src;
+package src.java;
 
 import java.io.*;
 
 class User implements Serializable {
-
-    // @mk: do nauki wyłapywac Expection'y
-    // @mk: ta klasa "User" wygląda mi na tzw Encje (->google), zasadniczo nie powinineś się tu odwoływać do konsoli
 
     private String pesel = "";
     private String name = "";
@@ -15,10 +12,7 @@ class User implements Serializable {
     private String email = "";
     private String address;
 
-    User() {
-    }
 
-    //getter
     String getPesel() {
         return pesel;
     }
@@ -35,8 +29,9 @@ class User implements Serializable {
         return bNumber;
     }
 
-    //setter
     void setPesel(String pesel) throws IOException {
+//        this.pesel = pesel;
+
         String line;
         String tPesel = "";
 

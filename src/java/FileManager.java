@@ -1,4 +1,4 @@
-package src;
+package src.java;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,9 +26,18 @@ interface manager {
 
 public class FileManager implements manager {
 
-    private boolean isFileEmpty() throws IOException {
-        // podzielić na 2 osobne lub zmienic nazwe-
-        BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+    public boolean isFileEmpty() {
+        // podzielić na 2 osobne lub zmienic nazwe
+        try {
+            BufferedReader  reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+            return reader.readLine() == null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /*
         if (reader.readLine() == null) {
             BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
             writer.write("[]");
@@ -39,6 +48,8 @@ public class FileManager implements manager {
             return false;
         }
     }
+
+     */
 
     public void createFile() throws IOException {
 
@@ -59,7 +70,6 @@ public class FileManager implements manager {
         Gson json = new GsonBuilder().setPrettyPrinting().create();
         Scanner scanner = new Scanner(System.in);
 
-        //sprawdzanie czy plik jest pusty i dodanie znaku listy
         isFileEmpty();
 
         // kontakt z uzytkownikiem konsoli i zapisanie danych setterem
