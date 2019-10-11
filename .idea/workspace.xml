@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd1625be-6e34-42ba-ba8f-adffe54e9e86" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/FileManagerTest.java" afterDir="false" />
+    <list default="true" id="cd1625be-6e34-42ba-ba8f-adffe54e9e86" name="Default" comment="simplyfy class Main">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/FileManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/FileManager$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/FileManager$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/FileManager$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/FileManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/BazaUserow.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Menu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/manager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/menuSearch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/FileManagerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BazaUserow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BazaUserow.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/usersDatabase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db/usersDatabase.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/.idea/libraries/gson_2_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/BazaUserow.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/BazaUserow/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/backupFiles/usersDatabase — kopia.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/backupFiles/usersDatabase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/backupFiles/usersDatabaseTemp.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/db/usersDatabase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/opisZadania" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/Dupa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/EnglishDateFormatter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/FileManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/FileManager$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/FileManager$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/FileManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/Formatter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/src/menuSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BazaUserow/usersDatabase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/FileManagerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersDatabase.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,71 +65,59 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="BazaUserowGitHub" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Menu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/FileManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createFile#0;class#FileManager#0" />
-                <element signature="method#addUser#0;class#FileManager#0" />
-                <element signature="method#findUser#0;class#FileManager#0" />
-                <element signature="method#deleteUser#0;class#FileManager#0" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/FileManagerTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            <state relative-caret-position="18">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
-                <element signature="e#225#226#0" expanded="true" />
-                <element signature="e#273#274#0" expanded="true" />
-                <element signature="e#362#363#0" expanded="true" />
-                <element signature="e#404#405#0" expanded="true" />
+                <element signature="e#568#569#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/usersDatabase.txt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+            <state relative-caret-position="302">
+              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/FileManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/FileManagerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -110,6 +142,7 @@
       <find>posi</find>
       <find>position</find>
       <find>last</find>
+      <find>close</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,8 +154,6 @@
         <option value="$PROJECT_DIR$/FileManager.java" />
         <option value="$PROJECT_DIR$/opisZadania" />
         <option value="$PROJECT_DIR$/src/Dupa.java" />
-        <option value="$PROJECT_DIR$/usersDatabase.txt" />
-        <option value="$PROJECT_DIR$/db/usersDatabase.txt" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Menu.java" />
         <option value="$PROJECT_DIR$/src/User.java" />
@@ -130,7 +161,22 @@
         <option value="$PROJECT_DIR$/src/java/Menu.java" />
         <option value="$PROJECT_DIR$/src/java/FileManager.java" />
         <option value="$PROJECT_DIR$/src/test/FileManagerTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/usersDatabase.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/Menu.java" />
+        <option value="$PROJECT_DIR$/src/test/java/FileManagerTest.java" />
+        <option value="$PROJECT_DIR$/db/usersDatabase.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/User.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -166,7 +212,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,7 +229,20 @@
               <item name="BazaUserowGitHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="BazaUserowGitHub" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BazaUserowGitHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BazaUserowGitHub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BazaUserowGitHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BazaUserowGitHub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BazaUserowGitHub" type="b2602c69:ProjectViewProjectNode" />
@@ -193,7 +252,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -203,11 +262,17 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Programowanie\Java\ZadaniaStach\BazaUserowGitHub\src\test\java" />
+      <recent name="C:\Programowanie\Java\ZadaniaStach\BazaUserowGitHub\src\main\java" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -221,9 +286,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="BazaUserow" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -244,6 +317,17 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileManagerTest.testIsFileEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BazaUserow" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FileManagerTest" />
+      <option name="METHOD_NAME" value="testIsFileEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,6 +359,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="JUnit.FileManagerTest.testIsFileEmpty" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -339,30 +425,55 @@
       <option name="project" value="LOCAL" />
       <updated>1520080477569</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="simplyfy class Main">
+      <created>1570820413785</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1570820413786</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="FileManagerTest_testIsFileEmpty - 2019.10.11 at 15h 37m 55s.xml">
+      <configuration name="FileManagerTest.testIsFileEmpty" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FileManagerTest_testIsFileEmpty - 2019.10.11 at 15h 39m 20s.xml">
+      <configuration name="FileManagerTest.testIsFileEmpty" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15100671" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15100671" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Favorites" order="6" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.3990878" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.398017" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.3286119" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.3286119" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3295325" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.3286119" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -381,7 +492,8 @@
     <MESSAGE value="25,02,2018; 00:23" />
     <MESSAGE value="01,03,2018; 23:59" />
     <MESSAGE value="03.03.2018; 13:34" />
-    <option name="LAST_COMMIT_MESSAGE" value="03.03.2018; 13:34" />
+    <MESSAGE value="simplyfy class Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="simplyfy class Main" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/FileManager.java" />
@@ -441,71 +553,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dupa.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/usersDatabase.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dupa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/usersDatabase.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        <state relative-caret-position="227">
+          <caret line="1017" column="19" selection-start-line="1017" selection-start-column="19" selection-end-line="1017" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/FileManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/FileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="326">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createFile#0;class#FileManager#0" />
-            <element signature="method#addUser#0;class#FileManager#0" />
-            <element signature="method#findUser#0;class#FileManager#0" />
-            <element signature="method#deleteUser#0;class#FileManager#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/FileManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        <state relative-caret-position="302">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/FileManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#362#363#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -550,7 +660,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>9.0</last-edited>
+          <last-edited>12</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

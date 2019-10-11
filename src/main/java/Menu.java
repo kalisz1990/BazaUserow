@@ -1,5 +1,4 @@
-package src.java;
-
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -8,7 +7,15 @@ interface menuSearch {
 }
 
 public class Menu implements menuSearch {
-    private final manager manager = new FileManager();
+
+    private manager manager = null;
+    {
+        try {
+            manager = new FileManager();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void searchMenu() throws IOException {
         int answer;

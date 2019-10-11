@@ -1,5 +1,3 @@
-package src.java;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -26,10 +24,21 @@ interface manager {
 
 public class FileManager implements manager {
 
-    public boolean isFileEmpty() {
-        // podzielić na 2 osobne lub zmienic nazwe
+    private final String filePatch = "db/usersDatabase.txt";
+    private BufferedReader reader = new BufferedReader(new FileReader(filePatch));
+    private Scanner scanner = new Scanner(System.in);
+
+
+    FileManager() throws FileNotFoundException {
         try {
-            BufferedReader  reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+            createFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    boolean isFileEmpty() {
+        try {
             return reader.readLine() == null;
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,78 +46,78 @@ public class FileManager implements manager {
         return false;
     }
 
-    /*
-        if (reader.readLine() == null) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
-            writer.write("[]");
-            writer.close();
-            reader.close();
-            return true;
-        } else {
-            return false;
+    private void prepareFileIfEmpty() {
+        if (isFileEmpty()) {
+            try {
+                if (reader.readLine() == null) {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(filePatch));
+                    writer.write("[]");
+                    writer.close();
+//                reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-     */
-
     public void createFile() throws IOException {
-
-        File plik = new File("db" + File.separator + "usersDatabase.txt");
-
-        if (!plik.exists()) {
-            plik.createNewFile();
-            isFileEmpty();
+        File file = new File(filePatch);
+        if (!file.exists()) {
+            if (file.createNewFile()) {
+                prepareFileIfEmpty();
+            }
         }
     }
 
     public void addUser() throws IOException {
         String line;
-        StringBuilder tString = new StringBuilder();
-        String tJson;
-
+        StringBuilder stringBuilder = new StringBuilder();
         User user = new User();
-        Gson json = new GsonBuilder().setPrettyPrinting().create();
-        Scanner scanner = new Scanner(System.in);
 
-        isFileEmpty();
+        prepareFileIfEmpty();
 
-        // kontakt z uzytkownikiem konsoli i zapisanie danych setterem
         System.out.print("pesel: ");
-        user.setPesel(scanner.nextLine());
-        if (!user.getPesel().equals("")) {
-            System.out.print("name: ");
-            user.setName(scanner.nextLine());
-            System.out.println("addres details: ");
-            System.out.print("    street: ");
-            user.setStreet(scanner.nextLine());
-            System.out.print("    building number: ");
-            user.setbNumber(scanner.nextLine());
-            System.out.print("    apartment number: ");
-            user.setaNumber(scanner.nextLine());
-            System.out.print("email: ");
-            user.setEmail(scanner.nextLine());
-            user.setAddress(user.getStreet(), user.getbNumber(), user.getaNumber());
+        user.setPesel(checkIfsPeselIsCorrect(scanner.nextLine(), user));
+        System.out.print("name: ");
+        user.setName(scanner.nextLine());
+        System.out.println("addres details: ");
+        System.out.print("    street: ");
+        user.setStreet(scanner.nextLine());
+        System.out.print("    building number: ");
+        user.setbNumber(scanner.nextLine());
+        System.out.print("    apartment number: ");
+        user.setaNumber(scanner.nextLine());
+        System.out.print("email: ");
+        user.setEmail(scanner.nextLine());
+        user.setAddress(user.getStreet(), user.getbNumber(), user.getaNumber());
+
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
         }
-        // zapis z pliku do Stringa
-        BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+        addNewUserToFile(stringBuilder);
+    }
 
-        if (!isFileEmpty()) {
-            while ((line = reader.readLine()) != null) {
-                tString.append(line);
-            }
-            reader.close();
+    private void addNewUserToFile(StringBuilder tString) {
+        String tJson;
+        Gson json = new GsonBuilder().setPrettyPrinting().create();
+        User user = new User();
 
-            //deserializacja ze Stringa do LinkedList oraz dodanie nowego uzytkownika
-            LinkedList<User> linkedList = json.fromJson(tString.toString(), new TypeToken<LinkedList<User>>() {
-            }.getType());
-            linkedList.addLast(user);
+        //deserializacja ze Stringa do LinkedList oraz dodanie nowego uzytkownika
+        LinkedList<User> linkedList = json.fromJson(tString.toString(), new TypeToken<LinkedList<User>>() {
+        }.getType());
+        linkedList.addLast(user);
 
-            //zapis do pliku z linkedList
-            tJson = json.toJson(linkedList);
-            BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
+        //zapis do pliku z linkedList
+        tJson = json.toJson(linkedList);
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(filePatch));
             writer.write(tJson);
             writer.newLine();
             writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -130,11 +139,11 @@ public class FileManager implements manager {
             search = searchUser.nextLine();
             System.out.println();
 
-            BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+//            BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
             while ((line = reader.readLine()) != null) {
                 tString.append(line);
             }
-            reader.close();
+//            reader.close();
             // deserializacja ze Stringa, pliku do ArrayList
             ArrayList<User> arrayList = json.fromJson(tString.toString(), new TypeToken<ArrayList<User>>() {
             }.getType());
@@ -170,11 +179,11 @@ public class FileManager implements manager {
             System.out.print("\npesel of user to delete: ");
             userToDelete = scanner.nextLine();
 
-            BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
+//            BufferedReader reader = new BufferedReader(new FileReader("db" + File.separator + "usersDatabase.txt"));
             while ((line = reader.readLine()) != null) {
                 tString.append(line);
             }
-            reader.close();
+//            reader.close();
 
             // deserializacja ze Stringa z pliku do LinkedList
             LinkedList<User> linkedList = json.fromJson(tString.toString(), new TypeToken<LinkedList<User>>() {
@@ -194,10 +203,33 @@ public class FileManager implements manager {
 
             //zapis do pliku
             tJson = json.toJson(linkedList);
-            BufferedWriter writer = new BufferedWriter(new FileWriter("db" + File.separator + "usersDatabase.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePatch));
             writer.write(tJson);
             writer.newLine();
             writer.close();
         }
+    }
+
+    private String checkIfsPeselIsCorrect(String pesel, User user) throws IOException {
+        String line;
+        boolean flag = true;
+
+        while (flag) {
+            if (pesel.length() != 11) {
+                System.out.println("wrong pesel !!, check and write again\npesel: ");
+                pesel = scanner.next();
+                flag = true;
+            } else {
+                while ((line = reader.readLine()) != null) {
+                    if (line.contains(pesel)) {
+                        System.out.println("this pesel already exists in database\npesel: ");
+                        pesel = scanner.next();
+                        flag = true;
+                    }
+                }
+            }
+            flag = false;
+        }
+        return pesel;
     }
 }
